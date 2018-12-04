@@ -1,0 +1,33 @@
+{
+  "name": "lblog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node app",
+    "dev": "nodemon app",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1",
+    "mysql2": "^1.6.4",
+    "pug": "^2.0.3",
+    "sequelize": "^4.41.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lilins/L-Blog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lilins/L-Blog/issues"
+  },
+  "homepage": "https://github.com/lilins/L-Blog#readme"
+}
