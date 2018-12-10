@@ -1,0 +1,10 @@
+extends common/layout.pug
+
+block body
+  div(id="postList")
+    each post in posts
+      h1 #{post.postTitle}
+      p #{post.postAuthor}
+      p #{post.postContent}
+      button(class="btn btn-primary" class="post-edit" id=post.id) edit
+      button(class="btn btn-primary" class="post-delete" id=post.id) delete

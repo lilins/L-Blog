@@ -6,6 +6,7 @@ const http = require('http');
 const pug = require('pug')
 const router = require('./router');
 const api = require('./api');
+const apiStatus = require('./middleware/api');
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(router);
 app.use('/api', api);
+app.use('/api', apiStatus());
 
 http.createServer(app).listen(3000, function () {
   console.log("Guestbook app started on port 3000.");

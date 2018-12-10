@@ -1,0 +1,17 @@
+extends common/layout.pug
+
+block body
+  form
+    div(class="form-group")
+      label(for="") title
+      input(type="text", class="form-control", id="post-title", aria-describedby="emailHelp", placeholder="title")
+    div(class="form-group")
+      label(for="") author
+      input(type="text", class="form-control", id="post-author", aria-describedby="emailHelp", placeholder="author")
+    div(class="form-group")
+      label(for="") date
+      input(data-provide="datepicker")
+    div(class="form-group")
+      label(for="") content
+      input(type="text", class="form-control", id="post-content", aria-describedby="emailHelp", placeholder="content")
+    button(class="btn btn-primary" id="post-add" type="button") add
