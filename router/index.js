@@ -25,13 +25,13 @@ router.get('/', function (req, res) {
 
 router.get('/post', async function (req, res){
   const result = await requestPromise({ url: api.query, method: 'POST', json: true, body: {} });
-  res.render('post', { posts: result.message });
+  res.render('post', { posts: result.message, single: false });
 })
 
 router.get('/post/:id', async function (req, res){
   const params = req.params;
   const result = await requestPromise({ url: api.query, method: 'POST', json: true, body: params });
-  res.render('post', { posts: result.message });
+  res.render('post', { posts: result.message, single: true });
 })
 
 router.get('/post/:id/edit', async function (req, res){

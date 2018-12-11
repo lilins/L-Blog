@@ -5,9 +5,12 @@ $(document).ready(function () {
   const author = $('#post-author');
   const content = $('#post-content');
   const api = {
-    add: '/api/post',
+    add: '/api/post/0',
     edit: '/api/post',
-    delete: '/api/post'
+    delete: '/api/post',
+    comment: {
+      add: '/api/comment'
+    }
   }
   $('#post-add').on('click', function () {
     const body = {
@@ -44,14 +47,36 @@ $(document).ready(function () {
   });
   $('#postList').on('click', '.post-edit', function (event) {
     console.log($(event.target).attr('id'))
-    location.href = '/post/'+$(event.target).attr('id') + '/edit'
+    location.href = '/post/' + $(event.target).attr('id') + '/edit'
   });
   $('#postList').on('click', '.post-delete', function (event) {
-    console.log($(event.target).attr('id'))
     $.ajax({
-      url: api.delete + '/' + $(event.target).attr('id'),
+      url: api.delete + '/' + $(event.target).attr('postid'),
       dataType: 'json',
       method: "DELETE",
+      success: function (result) {
+        console.log(result)
+      }
+    });
+  });
+  $('#comment-add').on('click', function (event) {
+    const commentTitle = $('#comment-title').val();
+    const commentContent = $('#comment-content').val();
+    const postId = $('#comment-add').attr('postId');
+    const body = {
+      user: '',
+      email: '',
+      title: commentTitle,
+      content: commentContent,
+      toUser: author.val(),
+      date: '',
+      postId: postId
+    }
+    $.ajax({
+      url: api.comment.add,
+      dataType: 'json',
+      method: "POST",
+      data: body,
       success: function (result) {
         console.log(result)
       }

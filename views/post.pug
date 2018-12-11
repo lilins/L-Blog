@@ -6,5 +6,17 @@ block body
       h1 #{post.postTitle}
       p #{post.postAuthor}
       p #{post.postContent}
-      button(class="btn btn-primary" class="post-edit" id=post.id) edit
-      button(class="btn btn-primary" class="post-delete" id=post.id) delete
+      button(class="btn btn-primary" class="post-edit" postidid=post.id) edit
+      button(class="btn btn-primary" class="post-delete" postidid=post.id) delete
+      if single
+        div
+          h3 Comment
+          each comment in post.comments
+            h4 #{comment.commentTitle}
+            p @#{comment.commentToUser}
+            span Time #{comment.commentDate}
+            p #{comment.commentContent}
+          div
+            input(type="text", class="form-control", id="comment-title", placeholder="Title")
+            input(type="text", class="form-control", id="comment-content", placeholder="Content")
+            button(class="btn btn-primary" class="comment-add" id="comment-add" postid=post.id) add comment

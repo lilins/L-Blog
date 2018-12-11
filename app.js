@@ -22,5 +22,5 @@ app.use('/api', api);
 app.use('/api', apiStatus());
 
 http.createServer(app).listen(3000, function () {
-  console.log("Guestbook app started on port 3000.");
+  console.log("L-Blog app started on port 3000.");
 });
