@@ -3,11 +3,11 @@ extends ../common/layout.pug
 block body
   div(id="postList")
     each post in posts
-      h1 #{post.postTitle}
+      h1.test #{post.postTitle}
       p #{post.postAuthor}
       p #{post.postContent}
-      button(class="btn btn-primary" class="post-edit" postid=post.id) edit
-      button(class="btn btn-primary" class="post-delete" postid=post.id) delete
+      button.btn.btn-primary.post-edit(postid=post.id) edit
+      button.btn.btn-primary.post-delete(postid=post.id) delete
       if single
         div
           h3 Comment
@@ -17,6 +17,6 @@ block body
             span Time #{comment.commentDate}
             p #{comment.commentContent}
           div
-            input(type="text", class="form-control", id="comment-title", placeholder="Title")
-            input(type="text", class="form-control", id="comment-content", placeholder="Content")
-            button(class="btn btn-primary" class="comment-add" id="comment-add" postid=post.id) add comment
+            input.form-control#comment-title(type="text", placeholder="Title")
+            input.form-control#comment-content(type="text", placeholder="Content")
+            button.btn.btn-primary.comment-add#comment-add(postid=post.id) add comment
