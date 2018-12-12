@@ -1,3 +1,7 @@
+import $ from 'jquery';
+
+console.log($)
+
 $(document).ready(function () {
   console.log("ready!");
   const id = $('#post-id');
@@ -46,8 +50,8 @@ $(document).ready(function () {
     });
   });
   $('#postList').on('click', '.post-edit', function (event) {
-    console.log($(event.target).attr('id'))
-    location.href = '/post/' + $(event.target).attr('id') + '/edit'
+    console.log($(event.target), $(event.target).attr('postid'))
+    location.href = '/post/' + $(event.target).attr('postid') + '/edit'
   });
   $('#postList').on('click', '.post-delete', function (event) {
     $.ajax({

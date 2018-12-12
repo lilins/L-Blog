@@ -25,24 +25,24 @@ router.get('/', function (req, res) {
 
 router.get('/post', async function (req, res){
   const result = await requestPromise({ url: api.query, method: 'POST', json: true, body: {} });
-  res.render('post', { posts: result.message, single: false });
+  res.render('post/post', { posts: result.message, single: false });
 })
 
 router.get('/post/:id', async function (req, res){
   const params = req.params;
   const result = await requestPromise({ url: api.query, method: 'POST', json: true, body: params });
-  res.render('post', { posts: result.message, single: true });
+  res.render('post/post', { posts: result.message, single: true });
 })
 
 router.get('/post/:id/edit', async function (req, res){
   const params = req.params;
   const result = await requestPromise({ url: api.query, method: 'POST', json: true, body: params });
   const post = result.message.length > 0 && result.message.pop();
-  res.render('postEdit', { post: post });
+  res.render('post/postEdit', { post: post });
 })
 
 router.get('/newpost', async function(req, res){
-  res.render('postAdd');
+  res.render('post/postAdd');
 })
 
 module.exports = router;

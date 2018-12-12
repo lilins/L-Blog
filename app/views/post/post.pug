@@ -1,4 +1,4 @@
-extends common/layout.pug
+extends ../common/layout.pug
 
 block body
   div(id="postList")
@@ -6,8 +6,8 @@ block body
       h1 #{post.postTitle}
       p #{post.postAuthor}
       p #{post.postContent}
-      button(class="btn btn-primary" class="post-edit" postidid=post.id) edit
-      button(class="btn btn-primary" class="post-delete" postidid=post.id) delete
+      button(class="btn btn-primary" class="post-edit" postid=post.id) edit
+      button(class="btn btn-primary" class="post-delete" postid=post.id) delete
       if single
         div
           h3 Comment
