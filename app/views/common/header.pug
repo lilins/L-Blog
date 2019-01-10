@@ -1,2 +1,9 @@
-div 
-  h3 header
+nav.navbar.navbar-expand-lg.navbar-light.bg-light
+  a.navbar-brand
+    .header-logo-pic
+    a.header-logo-name #{header.title}
+  .collapse.navbar-collapse
+    ul.navbar-nav
+      each navItem in header.navList
+        li.nav-item
+          a.nav-link(href=navItem.link) #{navItem.name}

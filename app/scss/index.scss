@@ -1,3 +1,34 @@
-.test{
-  color: red;
+
+@import "~bootstrap/scss/bootstrap";
+
+.header-logo-pic{
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: grey;
+}
+.nav-link{
+  color: rgba(0,0,0,.9);
+  padding-right: .5rem;
+  padding-left: .5rem;
+}
+.comment{
+  border-top: .3rem solid rgba(0,0,0,0.2);
+}
+.comment-container{
+  margin-top: 2rem;
+}
+.comment-avatar{
+  display: block;
+  width: 3rem;
+  height: 3rem;
+  background: grey;
+  border-radius: .3rem;
+}
+.comment-block{
+  padding: 1rem;
+  border: 1px solid rgba(0,0,0,0.2);
+}
+.breadcrumb-container{
+  margin-top: 1rem;
 }

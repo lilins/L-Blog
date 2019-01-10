@@ -1,22 +1,44 @@
 extends ../common/layout.pug
 
 block body
-  div(id="postList")
+  nav.breadcrumb-container(aria-label="breadcrumb")
+    ol.breadcrumb
+      each breadcrumb in breadcrumbList
+        li.breadcrumb-item
+          a(href=breadcrumb.link) #{breadcrumb.name}
+  #postList
     each post in posts
-      h1.test #{post.postTitle}
-      p #{post.postAuthor}
+      .row
+        .col
+          h2.post-title #{post.postTitle}
+        .col
+          .btn-group.float-right
+            a.btn.btn-secondary.dropdown-toggle#dropdownMenuLink(href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false") View
+            .dropdown-menu(aria-labelledby="dropdownMenuLink")
+              a.dropdown-item(href="/post/"+post.id) View
+              a.dropdown-item.post-edit(postid=post.id) Edit
+              a.dropdown-item.post-delete(postid=post.id) Delete
+      small written by: #{post.postAuthor} | Time: #{post.postDate}
       p #{post.postContent}
-      button.btn.btn-primary.post-edit(postid=post.id) edit
-      button.btn.btn-primary.post-delete(postid=post.id) delete
       if single
-        div
-          h3 Comment
+        .comment
+          h4 Comment
           each comment in post.comments
-            h4 #{comment.commentTitle}
-            p @#{comment.commentToUser}
-            span Time #{comment.commentDate}
-            p #{comment.commentContent}
+            .row.comment-container
+              .col-1
+                span.comment-avatar
+              .col-11
+                .comment-block
+                  small @#{comment.commentToUser} commited by: #{comment.commentDate}
+                  p #{comment.commentContent}
           div
-            input.form-control#comment-title(type="text", placeholder="Title")
-            input.form-control#comment-content(type="text", placeholder="Content")
-            button.btn.btn-primary.comment-add#comment-add(postid=post.id) add comment
+            .row.comment-container
+              .col-1
+                span.comment-avatar
+              .col-11
+                .comment-block
+                  input.form-control#comment-title(type="text", placeholder="Title")
+                  input.form-control#comment-content(type="text", placeholder="Content")
+            .row
+              .col
+                button.btn.btn-primary.comment-add.float-right#comment-add(postid=post.id) add comment

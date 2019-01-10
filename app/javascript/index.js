@@ -1,7 +1,14 @@
 import $ from 'jquery';
-import '../scss/index.scss'
+import '../scss/index.scss';
+import 'bootstrap';
+import '@babel/polyfill';
 
-console.log($)
+const ajaxPromise = option => {
+  return new Promise((resolve, reject) => {
+    option.success = result => resolve(result)
+    $.ajax(option);
+  })
+}
 
 $(document).ready(function () {
   console.log("ready!");
@@ -10,28 +17,26 @@ $(document).ready(function () {
   const author = $('#post-author');
   const content = $('#post-content');
   const api = {
-    add: '/api/post/0',
+    add: '/api/post',
     edit: '/api/post',
     delete: '/api/post',
     comment: {
       add: '/api/comment'
     }
   }
-  $('#post-add').on('click', function () {
+  $('#post-add').on('click', async function () {
     const body = {
       title: title.val(),
       author: author.val(),
       content: content.val()
     }
-    $.ajax({
+    const result = await ajaxPromise({
       url: api.add,
       dataType: 'json',
       method: "POST",
-      data: body,
-      success: function (result) {
-        console.log(result)
-      }
-    });
+      data: body
+    })
+    console.log(result)
   });
   $('#post-update').on('click', function () {
     const body = {

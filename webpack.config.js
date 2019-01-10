@@ -6,6 +6,7 @@ var ROOT_PATH = path.resolve(__dirname);
 module.exports = {
   // context webpack处理entry选项时的基础路径
   context: path.join(__dirname, 'app'),
+  mode: 'development',
   entry: [
     // 会寻找src目录下的index.js
     './javascript',
@@ -19,6 +20,16 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          // options: {
+          //   presets: ['@babel/env']
+          // }
+        }
+      },
+      {
         test: /\.scss$/,
         // CSS预处理器们
         use: [
@@ -26,6 +37,7 @@ module.exports = {
           "css-loader", // translates CSS into CommonJS
           "sass-loader" // compiles Sass to CSS, using Node Sass by default
         ],
+        
         // loaders: ['postcss'],
         // include: SCSS_PATH
       }
